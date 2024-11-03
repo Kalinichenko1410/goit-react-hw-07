@@ -8,13 +8,12 @@ import { createSlice} from '@reduxjs/toolkit';
       fetchContactsSussess: (state, action) => {
        state.items = action.payload;
      },
-  addContacts: (state, action) => {
+    deleteContacts: (state, action) => {
+      state.items = state.items.filter(contact => contact.id !== action.payload);
+    },
+   addContacts: (state, action) => {
     state.items.push(action.payload); 
 },
-    addContacts: (state, action) => {
-      state.items.push(action.payload);
-     },
-     
   },
 });
 
