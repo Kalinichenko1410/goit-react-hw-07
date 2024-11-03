@@ -7,6 +7,14 @@ import { createSlice} from '@reduxjs/toolkit';
    reducers: {
       fetchContactsSussess: (state, action) => {
        state.items = action.payload;
+       state.isLoading = false;
+     },
+     setIsLoading: (state, action) => {
+       state.isLoading = action.payload;
+     },
+     setError : (state, action) => {
+       state.error = action.payload
+       state.isLoading = false;
      },
     deleteContacts: (state, action) => {
       state.items = state.items.filter(contact => contact.id !== action.payload);
@@ -19,6 +27,5 @@ import { createSlice} from '@reduxjs/toolkit';
 
 export const selectContacts = state => state.contacts.items;
 export const contactsReducer = contactsSlice.reducer;  
-export const { deleteContacts } = contactsSlice.actions;
-export const { addContacts } = contactsSlice.actions;
-export const { fetchContactsSussess } = contactsSlice.actions;
+
+export const { fetchContactsSussess, deleteContacts, addContacts, setIsLoading, setError} = contactsSlice.actions;
