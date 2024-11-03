@@ -8,7 +8,10 @@ import { createSlice} from '@reduxjs/toolkit';
       fetchContactsSussess: (state, action) => {
        state.items = action.payload;
      },
-    addContact: (state, action) => {
+  addContacts: (state, action) => {
+    state.items.push(action.payload); 
+},
+    addContacts: (state, action) => {
       state.items.push(action.payload);
      },
      
@@ -17,6 +20,6 @@ import { createSlice} from '@reduxjs/toolkit';
 
 export const selectContacts = state => state.contacts.items;
 export const contactsReducer = contactsSlice.reducer;  
-export const { deleteContact } = contactsSlice.actions;
-export const { addContact } = contactsSlice.actions;
+export const { deleteContacts } = contactsSlice.actions;
+export const { addContacts } = contactsSlice.actions;
 export const { fetchContactsSussess } = contactsSlice.actions;

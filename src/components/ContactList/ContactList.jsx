@@ -8,9 +8,9 @@ const ContactList = () => {
   const contacts = useSelector(selectContacts);
   const searchStr = useSelector(selectNameFilter);
   
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(searchStr.toLowerCase().trim())
-  );
+  const filteredContacts = Array.isArray(contacts) ? contacts.filter(contact =>
+  contact.name && contact.name.toLowerCase().includes(searchStr.toLowerCase().trim())
+) : [];
 
   return (
     <ul className={s.contactList}>
